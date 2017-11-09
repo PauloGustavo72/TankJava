@@ -136,11 +136,11 @@ public class Arena extends JComponent
 				if(dist <= 30){ /*Colis�o entre tanques*/
 					if(t.velocidade > 0){
 						t.velocidade *= -1;
-						t.girarAntiHorario(7);
+						t.girarAntiHorario(100);
 					}
 					else{
 						t.velocidade = 2;
-					    t.girarHorario(7);
+					    t.girarHorario(100);
 					}
 				}
 				
@@ -192,8 +192,8 @@ public class Arena extends JComponent
 		for(Tanque t:tanques){
 			if(t.estaAtivo){
 				if(! tiro.estaAtivo){
-					tiro.x = t.x + 20;
-					tiro.y = t.y + 20;
+					tiro.x = t.x ;
+					tiro.y = t.y ;
 					tiro.angulo = t.angulo;
 					tiro.cor = Color.RED;
 					tiro.setId(t.getId());
