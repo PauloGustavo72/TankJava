@@ -1,19 +1,25 @@
 package tanque.teste;
 
+import java.awt.Color;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
+import javax.swing.JFrame;
+
+import tanque.tanque.Arena;
+import tanque.tanque.Tanque;
 
 public class Servidor {
 
-	public static void main(String[] args) throws IOException {
-		// inicia o servidor
-		new Servidor(12345).executa();
-	}
 
+	
 	private int porta;
 	private List<PrintStream> clientes;
 
@@ -25,12 +31,36 @@ public class Servidor {
 	public void executa() throws IOException {
 		ServerSocket servidor = new ServerSocket(this.porta);
 		System.out.println("Porta 12345 aberta!");
+		Arena arena = new Arena(640,480);
+		arena.adicionaTanque(new Tanque(400,50,180,Color.BLUE,1));
+		arena.adicionaTanque(new Tanque(400,200,0,Color.RED,2));
+		
+		
+		JFrame janela = new JFrame("JTank");
+		janela.getContentPane().add(arena);
+		janela.setResizable(false);
+		janela.pack();
+		//janela.setVisible(true);
+		janela.setDefaultCloseOperation(3);
 
 		while (true) {
 			// aceita um cliente
 			Socket cliente = servidor.accept();
+			janela.setVisible(true);
+			
 			System.out.println("Nova conexão com o cliente " + cliente.getInetAddress().getHostAddress());
-
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			// adiciona saida do cliente à lista
 			PrintStream ps = new PrintStream(cliente.getOutputStream());
 			this.clientes.add(ps);

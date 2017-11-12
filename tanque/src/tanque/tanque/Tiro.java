@@ -1,3 +1,4 @@
+package tanque.tanque;
 
 
 import java.awt.Color;

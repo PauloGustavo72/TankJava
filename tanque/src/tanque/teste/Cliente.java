@@ -1,6 +1,7 @@
 package tanque.teste;
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -24,7 +25,11 @@ public class Cliente {
 	   public void executa() throws UnknownHostException, IOException {
 	     Socket cliente = new Socket(this.host, this.porta);
 	     System.out.println("O cliente se conectou ao servidor!");
-	 
+	    
+	     
+	     
+	     
+	     
 	     // thread para receber mensagens do servidor
 	     Recebedor r = new Recebedor(cliente.getInputStream());
 	     new Thread(r).start();

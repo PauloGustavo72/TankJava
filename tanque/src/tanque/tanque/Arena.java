@@ -1,3 +1,4 @@
+package tanque.tanque;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,11 +11,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.HashSet;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
+
+import tanque.teste.Servidor;
 
 @SuppressWarnings("serial")
 public class Arena extends JComponent 
@@ -202,23 +206,9 @@ public class Arena extends JComponent
 			}
 		}
 	}
-	public static void main(String args[]){
-		Arena arena = new Arena(640,480);
-		arena.adicionaTanque(new Tanque(400,50,180,Color.BLUE,1));
-		arena.adicionaTanque(new Tanque(400,200,0,Color.RED,2));
-		arena.adicionaTanque(new Tanque(400,300,270,Color.GREEN,3));
-		arena.adicionaTanque(new Tanque(200,50,90,Color.YELLOW,4));
-		arena.adicionaTanque(new Tanque(100,120,270,Color.GRAY,5));
-		arena.adicionaTanque(new Tanque(180,307,180,Color.WHITE,6));
-		arena.adicionaTanque(new Tanque(520,208,23,Color.CYAN, 7));
-		arena.adicionaTanque(new Tanque(300,300,47,Color.ORANGE,8));
+	public static void main(String args[]) throws IOException{
+		 new Servidor(12345).executa();
 		
-		JFrame janela = new JFrame("JTank");
-		janela.getContentPane().add(arena);
-		janela.setResizable(false);
-		janela.pack();
-		janela.setVisible(true);
-		janela.setDefaultCloseOperation(3);
 	
 	}
 
