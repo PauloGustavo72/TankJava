@@ -7,8 +7,9 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
+import java.io.Serializable;
 
-public class Tanque {
+public class Tanque implements Serializable{
 	protected double x,y;
 	protected double angulo;
 	protected int anguloc,cont=0;

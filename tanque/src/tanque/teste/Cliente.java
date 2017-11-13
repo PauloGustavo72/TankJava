@@ -1,11 +1,14 @@
 package tanque.teste;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
+
+import tanque.tanque.Tanque;
 
 public class Cliente {
 	   public static void main(String[] args) 
@@ -27,8 +30,11 @@ public class Cliente {
 	     System.out.println("O cliente se conectou ao servidor!");
 	    
 	     
-	     
-	     
+//	     ObjectOutputStream saidaTeste = new ObjectOutputStream(cliente.getOutputStream());
+//	     saidaTeste.writeObject(new Tanque(400,200,0,Color.RED,2));
+//	     
+//	     saidaTeste.close();
+//	     
 	     
 	     // thread para receber mensagens do servidor
 	     Recebedor r = new Recebedor(cliente.getInputStream());

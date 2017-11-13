@@ -207,6 +207,10 @@ public class Arena extends JComponent
 		}
 	}
 	public static void main(String args[]) throws IOException{
+		
+		
+		
+		
 		 new Servidor(12345).executa();
 		
 	

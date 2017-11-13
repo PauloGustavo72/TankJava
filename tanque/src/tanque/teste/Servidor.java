@@ -40,27 +40,29 @@ public class Servidor {
 		janela.getContentPane().add(arena);
 		janela.setResizable(false);
 		janela.pack();
-		//janela.setVisible(true);
+		janela.setVisible(true);
 		janela.setDefaultCloseOperation(3);
 
 		while (true) {
-			// aceita um cliente
+			
+			
 			Socket cliente = servidor.accept();
-			janela.setVisible(true);
+//		    ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
+//		    
+//		    try {
+//				Tanque teste = (Tanque) entrada.readObject();
+//				arena.adicionaTanque(teste);
+//			} catch (ClassNotFoundException e) {
+//				System.out.println("não leu o tanque");
+//				e.printStackTrace();
+//			}
+//		    
+//			entrada.close();
+//			
+			
+			
 			
 			System.out.println("Nova conexão com o cliente " + cliente.getInetAddress().getHostAddress());
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			// adiciona saida do cliente à lista
 			PrintStream ps = new PrintStream(cliente.getOutputStream());
 			this.clientes.add(ps);
