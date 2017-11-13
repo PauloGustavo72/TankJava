@@ -47,18 +47,18 @@ public class Servidor {
 			
 			
 			Socket cliente = servidor.accept();
-//		    ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
-//		    
-//		    try {
-//				Tanque teste = (Tanque) entrada.readObject();
-//				arena.adicionaTanque(teste);
-//			} catch (ClassNotFoundException e) {
-//				System.out.println("não leu o tanque");
-//				e.printStackTrace();
-//			}
-//		    
-//			entrada.close();
-//			
+	    ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
+		    
+		    try {
+				Tanque teste = (Tanque) entrada.readObject();
+				arena.adicionaTanque(teste);
+			} catch (ClassNotFoundException e) {
+				System.out.println("não leu o tanque");
+				e.printStackTrace();
+			}
+		    
+			//entrada.close();
+			
 			
 			
 			

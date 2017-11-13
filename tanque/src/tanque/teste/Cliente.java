@@ -30,11 +30,11 @@ public class Cliente {
 	     System.out.println("O cliente se conectou ao servidor!");
 	    
 	     
-//	     ObjectOutputStream saidaTeste = new ObjectOutputStream(cliente.getOutputStream());
-//	     saidaTeste.writeObject(new Tanque(400,200,0,Color.RED,2));
-//	     
+	     ObjectOutputStream saidaTeste = new ObjectOutputStream(cliente.getOutputStream());
+	     saidaTeste.writeObject(new Tanque(400,200,0,Color.RED,2));
+	     
 //	     saidaTeste.close();
-//	     
+	     
 	     
 	     // thread para receber mensagens do servidor
 	     Recebedor r = new Recebedor(cliente.getInputStream());
