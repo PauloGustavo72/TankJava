@@ -1,20 +1,22 @@
-package tanque.teste;
+package tanque.conexao;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+import tanque.tanque.Arena;
 import tanque.tanque.Tanque;
 
 public class Cliente {
 	   public static void main(String[] args) 
 	         throws UnknownHostException, IOException {
 	     // dispara cliente
-	     new Cliente("192.168.1.48", 12345).executa();
+	     new Cliente("127.0.0.1", 12345).executa();
 	   }
 	   
 	   private String host;
@@ -31,7 +33,18 @@ public class Cliente {
 	    
 	     
 	     ObjectOutputStream saidaTeste = new ObjectOutputStream(cliente.getOutputStream());
+	     ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
 	     saidaTeste.writeObject(new Tanque(400,200,0,Color.RED,2));
+	     
+	     try {
+			Arena arena = (Arena) entrada.readObject();
+			arena.setVisible(true);
+			System.out.println("entrou no arena cliente");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	     
 	     
 //	     saidaTeste.close();
 	     

@@ -1,4 +1,4 @@
-package tanque.teste;
+package tanque.conexao;
 
 public class ThreadAddTanque implements Runnable {
 

@@ -1,4 +1,4 @@
-package tanque.teste;
+package tanque.conexao;
 
 import java.io.InputStream;
 import java.util.Scanner;

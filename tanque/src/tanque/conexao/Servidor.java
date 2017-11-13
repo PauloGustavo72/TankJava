@@ -1,9 +1,10 @@
-package tanque.teste;
+package tanque.conexao;
 
 import java.awt.Color;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -48,12 +49,14 @@ public class Servidor {
 			
 			Socket cliente = servidor.accept();
 	    ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
+	    ObjectOutputStream saidaTeste = new ObjectOutputStream(cliente.getOutputStream());
 		    
 		    try {
 				Tanque teste = (Tanque) entrada.readObject();
 				arena.adicionaTanque(teste);
+				saidaTeste.writeObject(arena);
+				
 			} catch (ClassNotFoundException e) {
-				System.out.println("não leu o tanque");
 				e.printStackTrace();
 			}
 		    
@@ -63,6 +66,7 @@ public class Servidor {
 			
 			
 			System.out.println("Nova conexão com o cliente " + cliente.getInetAddress().getHostAddress());
+			
 			// adiciona saida do cliente à lista
 			PrintStream ps = new PrintStream(cliente.getOutputStream());
 			this.clientes.add(ps);
@@ -80,4 +84,9 @@ public class Servidor {
 			cliente.println(msg);
 		}
 	}
+
+	public static void main(String[] args) throws IOException {
+		new Servidor(12345).executa();
+	}
+
 }

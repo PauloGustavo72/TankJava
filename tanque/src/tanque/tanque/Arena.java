@@ -18,7 +18,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import tanque.teste.Servidor;
+import tanque.conexao.Servidor;
 
 @SuppressWarnings("serial")
 public class Arena extends JComponent 
@@ -206,16 +206,7 @@ public class Arena extends JComponent
 			}
 		}
 	}
-	public static void main(String args[]) throws IOException{
-		
-		
-		
-		
-		 new Servidor(12345).executa();
-		
 	
-	}
-
 
 	
 	
