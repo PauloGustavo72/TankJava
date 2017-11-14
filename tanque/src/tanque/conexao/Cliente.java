@@ -17,7 +17,7 @@ import tanque.tanque.Tanque;
 public class Cliente {
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		// dispara cliente
-		new Cliente("192.168.1.48", 12345).executa();
+		new Cliente("192.168.1.51", 12345).executa();
 	}
 
 	private String host;

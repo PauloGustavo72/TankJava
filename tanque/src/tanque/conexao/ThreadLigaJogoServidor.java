@@ -31,7 +31,6 @@ public class ThreadLigaJogoServidor implements Runnable {
 	public void run() {
 		 	
 			try {
-				entrada = new ObjectInputStream(cliente.getInputStream());
 				
 				Tanque teste = (Tanque) entrada.readObject();
 				arena.adicionaTanque(teste);
