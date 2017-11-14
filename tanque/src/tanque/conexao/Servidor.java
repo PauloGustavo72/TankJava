@@ -49,7 +49,9 @@ public class Servidor {
 			
 			Socket cliente = servidor.accept();
 			
-			new ThreadLigaJogoServidor(cliente, arena, janela).run();
+			ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
+		    ObjectOutputStream saidaTeste = new ObjectOutputStream(cliente.getOutputStream());
+			new ThreadLigaJogoServidor(cliente, arena, janela, entrada, saidaTeste).run();
 			//entrada.close();
 			
 			

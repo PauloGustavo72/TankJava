@@ -16,40 +16,30 @@ public class ThreadLigaJogoServidor implements Runnable {
 	Arena arena;
 	JFrame janela;
 	
-	public ThreadLigaJogoServidor(Socket cliente, Arena arena, JFrame janela) {
+	ObjectInputStream entrada;
+	ObjectOutputStream saidaTeste;
+	
+	public ThreadLigaJogoServidor(Socket cliente, Arena arena, JFrame janela, ObjectInputStream entrada, ObjectOutputStream saidaTeste) {
 		this.cliente = cliente;
 		this.arena = arena;
 		this.janela = janela;
-	
+		this.entrada = entrada;
+		this.saidaTeste = saidaTeste;
 	}
 	
 	@Override
 	public void run() {
-		 	ObjectInputStream entrada = null;
+		 	
 			try {
 				entrada = new ObjectInputStream(cliente.getInputStream());
-			} catch (IOException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-		 	ObjectOutputStream saidaTeste = null;
-			try {
 				
 				Tanque teste = (Tanque) entrada.readObject();
 				arena.adicionaTanque(teste);
-			} 
-			 catch (IOException | ClassNotFoundException e1) {
+				saidaTeste.writeObject(janela);
+			} catch (IOException | ClassNotFoundException e2) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e2.printStackTrace();
 			}
-			    
-			    try {
-					saidaTeste.writeObject(janela);
-					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 			    
 	}
 

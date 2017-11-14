@@ -17,7 +17,7 @@ import tanque.tanque.Tanque;
 public class Cliente {
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		// dispara cliente
-		new Cliente("192.168.1.51", 12345).executa();
+		new Cliente("192.168.1.48", 12345).executa();
 	}
 
 	private String host;
@@ -31,12 +31,14 @@ public class Cliente {
 	public void executa() throws UnknownHostException, IOException {
 		Socket cliente = new Socket(this.host, this.porta);
 		System.out.println("O cliente se conectou ao servidor!");
+		
+		ObjectOutputStream saidaTeste = new ObjectOutputStream(cliente.getOutputStream());
+	    ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
+		
+	    while (true) {
+			
+			new ThreadLigaJogoCliente(saidaTeste, entrada).run();
 
-		while (true) {
-
-			new ThreadLigaJogoCliente(cliente).run();
-
-			// saidaTeste.close();
 
 			// thread para receber mensagens do servidor
 			Recebedor r = new Recebedor(cliente.getInputStream());
@@ -49,9 +51,9 @@ public class Cliente {
 				saida.println(teclado.nextLine());
 			}
 
-			saida.close();
-			teclado.close();
-			cliente.close();
+			//saida.close();
+			//teclado.close();
+			//cliente.close();
 		}
 	}
 }

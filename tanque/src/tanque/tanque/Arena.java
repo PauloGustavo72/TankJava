@@ -12,6 +12,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashSet;
 
 import javax.swing.JComponent;
@@ -22,7 +23,7 @@ import tanque.conexao.Servidor;
 
 @SuppressWarnings("serial")
 public class Arena extends JComponent 
-		implements MouseListener, ActionListener,KeyListener{
+		implements MouseListener, ActionListener,KeyListener, Serializable{
 	private Tanque apontado;
 	private int largura,altura;
 	private HashSet<Tanque> tanques;
