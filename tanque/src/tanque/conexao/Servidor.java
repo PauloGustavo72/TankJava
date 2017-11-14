@@ -48,18 +48,8 @@ public class Servidor {
 			
 			
 			Socket cliente = servidor.accept();
-	    ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
-	    ObjectOutputStream saidaTeste = new ObjectOutputStream(cliente.getOutputStream());
-		    
-		    try {
-				Tanque teste = (Tanque) entrada.readObject();
-				arena.adicionaTanque(teste);
-				saidaTeste.writeObject(arena);
-				
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-		    
+			
+			new ThreadLigaJogoServidor(cliente, arena, janela).run();
 			//entrada.close();
 			
 			
