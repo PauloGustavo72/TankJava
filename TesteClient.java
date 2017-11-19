@@ -22,7 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class TesteClient extends JFrame implements ActionListener, KeyListener {
+public class TesteClient extends JFrame implements ActionListener, KeyListener, Runnable {
 
 	private static final long serialVersionUID = 1L;
 	private JTextArea texto;
@@ -52,7 +52,7 @@ public class TesteClient extends JFrame implements ActionListener, KeyListener {
 		texto.setEditable(false);
 		texto.setBackground(new Color(240, 240, 240));
 		txtMsg = new JTextField(20);
-		lblHistorico = new JLabel("Histórico");
+		lblHistorico = new JLabel("Histï¿½rico");
 		lblMsg = new JLabel("Mensagem");
 		btnSend = new JButton("Enviar");
 		btnSend.setToolTipText("Enviar Mensagem");
@@ -166,10 +166,16 @@ public class TesteClient extends JFrame implements ActionListener, KeyListener {
 	public void keyTyped(KeyEvent arg0) {
 	}
 
-	public static void main(String[] args) throws IOException {
+	public void run() {
 
-		TesteClient app = new TesteClient();
-		app.conectar();
-		app.escutar();
+		TesteClient app;
+		try {
+			app = new TesteClient();
+			app.conectar();
+			app.escutar();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

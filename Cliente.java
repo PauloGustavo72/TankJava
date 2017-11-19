@@ -39,6 +39,11 @@ public class Cliente extends Thread {
 			InputStreamReader streamReader = new InputStreamReader(socketCliente.getInputStream());
 			BufferedReader reader = new BufferedReader(streamReader);
 			
+			
+			//Thread para o chat
+			TesteClient tc = new TesteClient();
+			new Thread(tc).start();
+			
 			while(true) {
 				String s = reader.readLine();
 				//System.out.println(s);
